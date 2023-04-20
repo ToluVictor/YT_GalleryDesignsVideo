@@ -1,0 +1,32 @@
+With(
+    {
+        BaseSVGCode: "
+            <svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+                viewBox='0 0 64 64' style='enable-background:new 0 0 64 64;' xml:space='preserve'>
+                <style type='text/css'>
+                    .baseCircle{fill:none;stroke:#BaseCircleColor;stroke-width:7;}
+                    .valueCircle{fill:none;stroke:#ValueCircleColor;stroke-width:7;}
+                </style>
+                <circle class='baseCircle' cx='32' cy='32' r='27'/>
+                <circle class='valueCircle' cx='32' cy='32' r='27' stroke-dasharray='#DisplayValue,500' transform='rotate(270,32,32)' />
+            </svg>
+        ",
+        ValueCircle_Circumference: (*Your Value*/100) * 169.646,
+        BaseCircleColor: "RGBA(237, 237, 237, 1)",
+        ValueCircleColor: "Black"
+    },
+    
+    "data:image/svg+xml;utf8, "&EncodeUrl(
+        Substitute(
+            Substitute(
+                Substitute(
+                    BaseSVGCode,
+                    "#DisplayValue",ValueCircle_Circumference
+                ),
+                "#BaseCircleColor",BaseCircleColor
+            ),
+            "#ValueCircleColor",ValueCircleColor
+        )
+    )
+)
+
