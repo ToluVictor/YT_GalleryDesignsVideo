@@ -1,0 +1,6 @@
+"data:image/svg+xml;utf8, "&EncodeUrl(
+    Substitute(
+        LookUp(customIcons,IconName = "NextIcon").IconData,
+        "currentColor", *yourCustomColor*
+    )
+)
